@@ -1,0 +1,44 @@
+{% extends 'layout.html' %}
+{% block body %}
+<div class="row">
+    <div class="col-12 mb-4">
+        <div class="card border-light shadow-sm">
+            <div class="card-header">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <img src="{{ url_for('static', filename='quizresultss.png') }}">
+                        <h2 class="h5">Quiz Results</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <form action="{{ url_for('quiz_score') }}" method="POST">
+                    <table class="table align-items-center table-flush">
+                        <thead>
+                            <th>Question</th>
+                            <th>Your Answer</th>
+                            <th>Correct Answer</th>
+                            <th>Correct?</th>
+                        </thead>
+                        <tbody>
+                        {% for result in results %}
+                            <tr>
+                                <td>{{ result[0] }}</td>
+                                <td>{{ result[1] }}</td>
+                                <td>{{ result[2] }}</td>
+                                <td><input type="checkbox" name="results" value="{{ loop.index0 }}"></td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    <div class="text-center mt-4">
+                        <button type="submit" class="btn btn-primary">Calculate</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+

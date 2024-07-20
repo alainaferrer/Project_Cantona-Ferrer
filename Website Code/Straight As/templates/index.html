@@ -1,0 +1,35 @@
+{% extends 'layout.html' %}
+{% block body %}
+<div class="row align-items-center d-flex  justify-content-center">
+    <div class="col-12 mb-4">
+        <div class="card border-light shadow-sm components-section align-items-center d-flex  justify-content-center">
+            <div class="card-body align-items-center d-flex justify-content-center">    
+                <div class="row mb-4">
+                    <div class="col-lg-12 col-sm-16">
+                        <img src="{{url_for('static', filename='A.png')}}" align="middle" width="300"/>
+                      <h3 class="h3 text-center">Hello! Are you ready to ace your test?</h3>
+                    </div>
+                    <img src="{{ url_for('static', filename='question_undraw.png') }}" height="340px">
+                    <div class="card-body">
+                              <form method="POST" action="AnswerQuiz">
+                                <div class="mb-4">
+                                  <div class="form-group">
+                                      <label class="h6" for="exampleFormControlTextarea1">Input Text</label>
+                                        <textarea name="itext" class="form-control" placeholder="Enter text here" rows="6" required></textarea>
+                                  </div>      
+                                        <div class="mt-2">
+                                          <p>The number of test items and the type of questions to be <br> generated will
+                                            be tailor-fit to the text you entered.</p>
+                                      </div>
+                                         
+                                   
+                                   
+    <input type="submit" class="btn btn-primary" value="Generate">
+  </form>
+  </div>
+</div>
+</div>
+</div>
+    </div>
+</div>
+{% endblock %}

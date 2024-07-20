@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Add Task</title>
+      <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+</head>
+<body>
+  <br>
+  <img src="{{url_for('static', filename='A.png')}}" align="middle" width="300"/>
+    <h1>Add Task</h1>
+    <form method="POST">
+      {{ form.hidden_tag() }}
+      {{ form.title(size=20) }}<br>
+      {{ form.due_date(size=10) }}<br>
+      {{ form.submit() }}
+    </form>
+  </body>
+</html>

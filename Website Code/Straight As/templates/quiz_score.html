@@ -1,0 +1,24 @@
+{% extends 'layout.html' %}
+{% block body %}
+<div class="row">
+    <div class="col-12 mb-4">
+        <div class="card border-light shadow-sm">
+            <div class="card-header">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <img src="{{ url_for('static', filename='quizscoree.png') }}">
+                        <h2 class="h5">Quiz Score</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <p>Your score is: {{ score }}%</p>
+                <p>{{ message }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="text-center mt-4">
+    <a href="{{ url_for('index') }}" class="btn btn-primary">Generate another quiz</a>
+</div>
+{% endblock %}

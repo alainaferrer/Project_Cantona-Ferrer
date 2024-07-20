@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>My Tasks</title>
+          <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Straight A's</a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('dashboard') }}">Dashboard</a>
+                 <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('studytips') }}">Study Tips</a>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('view_tasks') }}">Tasks</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('index') }}">Quiz</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+  <br>
+    <p> </p> <br>
+        <p> </p><br>
+  <img src="{{url_for('static', filename='A.png')}}" align="middle" width="300"/>
+     <h1>My Tasks</h1>
+    <form method="POST" action="{{ url_for('update_task_status') }}">
+        <table>
+            <thead>
+                <tr>
+                    <th>Status</th> <!-- For checkbox -->
+                    <th>Task Title</th>
+                    <th>Due Date</th>
+                    <th>Edit?</th> <!-- For edit link -->
+                </tr>
+            </thead>
+                <tbody>
+                    {% for task in tasks %}
+                    <tr>
+                        <td class="checkbox-column">
+                            <input type="checkbox" class="checkbox" name="task_ids" value="{{ task.id }}" {% if task.status == 'completed' %}checked{% endif %}>
+                        </td>
+                        <td>{{ task.title }}</td>
+                        <td>{{ task.due_date }}</td>
+                        <td><a href="{{ url_for('edit_task', task_id=task.id) }}">Edit</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+        </table>
+        <button class="button" type="submit">Update Status</button>
+    </form>
+    <input type="button" value="Add Task" onclick="window.location.href='{{ url_for('add_task') }}'">
+</body>
+</html>
